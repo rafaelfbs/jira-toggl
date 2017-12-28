@@ -1,0 +1,25 @@
+{
+  "name": "jira-toggl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "watch": "nodemon --watch src -e js,jsx,ts,tsx --exec npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.5.2",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "jira": "^0.9.2",
+    "moment": "^2.19.2",
+    "prompt": "^1.0.0",
+    "toggl-api": "^1.0.1"
+  }
+}
