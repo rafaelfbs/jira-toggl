@@ -1,30 +1,40 @@
 import * as TogglClient from "toggl-api";
 import { JiraApi as JiraClient } from "jira";
 import * as prompt from "prompt";
+import * as Store from "data-store";
+import { promptWithPersistence } from "./decorators/prompt";
 
 import { TogglService } from "./services/TogglService";
 import { JiraService } from "./services/JiraService";
 import { IntegrationService } from "./services/IntegrationService";
 
+const store = Store('jira-toggl');
+
+promptWithPersistence(store, prompt);
+
 const promptSchema = {
-  properties: {
-    jiraUrl: {
-      required: true,
+    properties: {
+        jiraUrl: {
+            required: true,
+            persisted: true,
+        },
+        togglApiToken: {
+            required: true,
+            persisted: true,
+        },
+        jiraUser: {
+            required: true,
+            persisted: true,
+        },
+        jiraPass: {
+            required: true,
+            hidden: true,
+        },
+        loggedTag: {
+            required: true,
+            persisted: true,
+        }
     },
-    togglApiToken: {
-      required: true,
-    },
-    jiraUser: {
-      required: true,
-    },
-    jiraPass: {
-      required: true,
-      hidden: true,
-    },
-    loggedTag: {
-      required: true,
-    }
-  },
 };
 
 prompt.start();

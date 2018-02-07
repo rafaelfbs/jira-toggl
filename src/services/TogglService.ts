@@ -1,4 +1,5 @@
 import * as TogglClient from "toggl-api";
+import * as moment from "moment";
 
 export interface MarkEntryAsLoggedCommand {
   entryId: number;
@@ -16,7 +17,7 @@ export class TogglService {
 
   public getEntries() {
     return new Promise<any[]>((resolve, reject) =>
-      this.client.getTimeEntries((err, entries) => {
+      this.client.getTimeEntries(moment().subtract(30, 'days').toDate(), moment().toDate(), (err, entries) => {
         if (err) return reject(err);
         return resolve(entries);
       })
