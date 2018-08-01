@@ -41,7 +41,7 @@ prompt.start();
 
 prompt.get(promptSchema, (err, data) => {
     const toggl = new TogglClient({ apiToken: data.togglApiToken });
-    const jira = new JiraClient('http', data.jiraUrl, 80, data.jiraUser, data.jiraPass, '2');
+    const jira = new JiraClient('https', data.jiraUrl, 443, data.jiraUser, data.jiraPass, '2');
     const config = { loggedTag: data.loggedTag };
 
     const togglService = new TogglService(toggl, config);
